@@ -4,52 +4,102 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Liens utiles Abbott</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      padding: 16px;
+      background: #ffffff;
+      margin: 0;
+      padding: 20px;
     }
+
+    /* Logo */
     .logo {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
     .logo img {
-      max-width: 200px;
+      max-width: 220px;
     }
-    a {
-      display: block;
-      background: #0078D4;
-      color: white;
-      padding: 16px;
-      margin: 14px 0;
-      text-decoration: none;
-      border-radius: 12px;
-      font-size: 18px;
+
+    /* Grille type apps */
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 20px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .app {
       text-align: center;
+      text-decoration: none;
+      color: #004b87; /* Bleu Abbott */
     }
-    a:hover {
-      background: #005a9e;
+
+    .app-icon {
+      background: #e6f0f8; /* Bleu clair Abbott */
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      transition: transform 0.1s ease;
+    }
+
+    .app-icon:hover {
+      transform: scale(1.05);
+    }
+
+    .app-icon img {
+      width: 64px;
+      height: 64px;
+    }
+
+    .app-label {
+      margin-top: 10px;
+      font-size: 15px;
+      font-weight: 600;
     }
   </style>
 </head>
+
 <body>
 
-<div class="logo">
-  <img src="Abbottlogo_2.png" alt="Abbott">
-</div>
+  <!-- Logo -->
+  <div class="logo">
+    <img src="Abbottlogo_3.png" alt="Abbott">
+  </div>
 
-<a href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQlJFN1VFTFpBUjFTTzNJQlpKRjhQVzQ3UC4u&route=shorturl">
-  Ajout au planning
-</a>
+  <!-- Grille d'apps -->
+  <div class="app-grid">
 
-<a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUNVVDN1FTRVZLVUQ2OE05MjIxNVpOQlJIOS4u">
-  Commande de Merlin
-</a>
+    <a class="app"
+       href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQlJFN1VFTFpBUjFTTzNJQlpKRjhQVzQ3UC4u&route=shorturl"
+       target="_blank">
+      <div class="app-icon">
+        <img src="icon-planning.png" alt="">
+      </div>
+      <div class="app-label">Ajout au planning</div>
+    </a>
 
-<a href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQ0NQSkcwMlRJT1lVOEJTWFJCQUVLSEk0Ti4u&route=shorturl">
-  Commande de matériel
-</a>
+    <a class="app"
+       href="https://forms.office.com/Pages/ResponsePage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUNVVDN1FTRVZLVUQ2OE05MjIxNVpOQlJIOS4u"
+       target="_blank">
+      <div class="app-icon">
+        <img src="icon-merlin.png" alt="">
+      </div>
+      <div class="app-label">Commande de Merlin</div>
+    </a>
+
+    <a class="app"
+       href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQ0NQSkcwMlRJT1lVOEJTWFJCQUVLSEk0Ti4u&route=shorturl"
+       target="_blank">
+      <div class="app-icon">
+        <img src="icon-materiel.png" alt="">
+      </div>
+      <div class="app-label">Commande de matériel</div>
+    </a>
+
+  </div>
 
 </body>
 </html>
