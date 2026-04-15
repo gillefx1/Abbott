@@ -3,50 +3,75 @@
 <html lang="fr">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Liens utiles Abbott</title>
+  <title>Liens Abbott</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#004b87">
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      margin: 0;
-      padding: 20px;
+    :root {
+      --abbott-blue: #004b87;
+      --abbott-light: #e6f0f8;
+      --bg-light: #ffffff;
+      --bg-dark: #121212;
+      --text-light: #003b6f;
+      --text-dark: #ffffff;
+      --card-dark: #1e1e1e;
     }
 
-    /* Logo */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    /* Mode sombre automatique */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: var(--bg-dark);
+        color: var(--text-dark);
+      }
+      .app-icon {
+        background: var(--card-dark);
+      }
+    }
+
     .logo {
       text-align: center;
       margin-bottom: 25px;
     }
+
     .logo img {
       max-width: 220px;
     }
 
-    /* Grille type apps */
     .app-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 20px;
-      max-width: 500px;
+      gap: 22px;
+      max-width: 520px;
       margin: 0 auto;
     }
 
     .app {
       text-align: center;
       text-decoration: none;
-      color: #004b87; /* Bleu Abbott */
+      color: inherit;
     }
 
     .app-icon {
-      background: #e6f0f8; /* Bleu clair Abbott */
-      border-radius: 18px;
-      padding: 18px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      background: var(--abbott-light);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: 0 6px 10px rgba(0,0,0,0.12);
       transition: transform 0.1s ease;
     }
 
     .app-icon:hover {
-      transform: scale(1.05);
+      transform: scale(1.06);
     }
 
     .app-icon img {
@@ -58,45 +83,49 @@
       margin-top: 10px;
       font-size: 15px;
       font-weight: 600;
+      text-align: center;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Logo -->
   <div class="logo">
-    <img src="Abbottlogo_2.png" alt="Abbott">
+    <img src="logo-abbott.png" alt="Abbott">
   </div>
 
-  <!-- Grille d'apps -->
   <div class="app-grid">
 
-    <a class="app"
-       href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQlJFN1VFTFpBUjFTTzNJQlpKRjhQVzQ3UC4u&route=shorturl"
-       target="_blank">
+    <a class="app" target="_blank"
+       href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQlJFN1VFTFpBUjFTTzNJQlpKRjhQVzQ3UC4u&route=shorturl">
       <div class="app-icon">
-        <img src="icon-planning.png" alt="">
+        <img src="icon-planning.svg">
       </div>
       <div class="app-label">Ajout au planning</div>
     </a>
 
-    <a class="app"
-       href="https://forms.office.com/Pages/ResponsePage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUNVVDN1FTRVZLVUQ2OE05MjIxNVpOQlJIOS4u"
-       target="_blank">
+    <a class="app" target="_blank"
+       href="https://forms.office.com/Pages/ResponsePage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUNVVDN1FTRVZLVUQ2OE05MjIxNVpOQlJIOS4u">
       <div class="app-icon">
-        <img src="icon-merlin.png" alt="">
+        <img src="icon-merlin.svg">
       </div>
-      <div class="app-label">Commande de Merlin</div>
+      <div class="app-label">Commande Merlin</div>
     </a>
 
-    <a class="app"
-       href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQ0NQSkcwMlRJT1lVOEJTWFJCQUVLSEk0Ti4u&route=shorturl"
-       target="_blank">
+    <a class="app" target="_blank"
+       href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQ0NQSkcwMlRJT1lVOEJTWFJCQUVLSEk0Ti4u">
       <div class="app-icon">
-        <img src="icon-materiel.png" alt="">
+        <img src="icon-materiel.svg">
       </div>
-      <div class="app-label">Commande de matériel</div>
+      <div class="app-label">Commande matériel</div>
+    </a>
+
+    <a class="app" target="_blank"
+       href="https://xiam-md.oneabbott.com/fim">
+      <div class="app-icon">
+        <img src="icon-xiam.png">
+      </div>
+      <div class="app-label">XIAM</div>
     </a>
 
   </div>
