@@ -3,61 +3,65 @@
 <html lang="fr">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Liens Abbott</title>
+  <title>Abbott Apps</title>
 
   <!-- PWA -->
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#004b87">
+  <meta name="theme-color" content="#f2f2f7">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
   <style>
     :root {
+      --ios-bg: #f2f2f7;
+      --ios-card: #ffffff;
       --abbott-blue: #004b87;
-      --abbott-light: #e6f0f8;
-      --bg-light: #ffffff;
-      --text-light: #003b6f;
+      --text-main: #1c1c1e;
     }
 
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 20px;
-      background: var(--bg-light);
-      color: var(--text-light);
+      padding: 20px 16px 40px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+      background: var(--ios-bg);
+      color: var(--text-main);
     }
 
+    /* Logo */
     .logo {
       text-align: center;
-      margin-bottom: 25px;
+      margin: 10px 0 28px;
     }
 
     .logo img {
-      max-width: 220px;
+      max-width: 200px;
     }
 
+    /* Grille iOS : 2 apps max */
     .app-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 22px;
-      max-width: 520px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      max-width: 420px;
       margin: 0 auto;
     }
 
     .app {
-      text-align: center;
       text-decoration: none;
       color: inherit;
+      text-align: center;
     }
 
     .app-icon {
-      background: var(--abbott-light);
+      background: var(--ios-card);
       border-radius: 22px;
-      padding: 20px;
-      box-shadow: 0 6px 10px rgba(0,0,0,0.12);
-      transition: transform 0.1s ease;
+      padding: 22px 0;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+      transition: transform 0.12s ease;
     }
 
-    .app-icon:hover {
-      transform: scale(1.06);
+    .app:active .app-icon {
+      transform: scale(0.96);
     }
 
     .app-icon img {
@@ -67,9 +71,9 @@
 
     .app-label {
       margin-top: 10px;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
-      text-align: center;
+      color: var(--abbott-blue);
     }
   </style>
 </head>
@@ -89,7 +93,7 @@
       <div class="app-icon">
         <img src="icon-planning.png" alt="">
       </div>
-      <div class="app-label">Ajout au planning</div>
+      <div class="app-label">Ajout planning</div>
     </a>
 
     <a class="app" target="_blank"
