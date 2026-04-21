@@ -1,12 +1,29 @@
+
 <!DOCTYPE html>
-<html lang="fr padding:20px 16px 40px;<html lang="fr">
+<html lang="fr">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abbott Apps</title>
+
+<style>
+:root{
+  --ios-bg:#f2f2f7;
+  --ios-card:#ffffff;
+  --abbott-blue:#004b87;
+}
+
+body{
+  margin:0;
+  padding:20px 16px 40px;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
   background:var(--ios-bg);
 }
 
+/* LOGO */
 .logo{text-align:center;margin:10px 0 28px;}
 .logo img{max-width:200px;}
 
+/* GRID */
 .app-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -15,24 +32,49 @@
   margin:0 auto;
 }
 
-.app{text-decoration:none;text-align:center;color:inherit;}
+/* APP */
+.app{
+  text-decoration:none;
+  color:inherit;
+  text-align:center;
+  cursor:pointer;
+}
+
 .app-icon{
   background:var(--ios-card);
   border-radius:22px;
   padding:22px 0;
   box-shadow:0 8px 16px rgba(0,0,0,.08);
 }
+
 .app-icon img{width:64px;height:64px;}
-.app-label{
+
+.app-label,.folder-label{
   margin-top:10px;
   font-size:14px;
   font-weight:600;
   color:var(--abbott-blue);
 }
 
-/* dossiers */
-.folder-icon{
-  height:108px;
+/* FOLDER PREVIEW */
+.folder-icon{padding:12px;}
+.folder-preview{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:6px;
+  width:64px;
+  height:64px;
+  margin:0 auto;
+}
+
+.folder-preview img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.folder-empty{
+  height:64px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -40,23 +82,29 @@
   color:var(--abbott-blue);
 }
 
+/* BLUR OVERLAY */
 .folder-overlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.35);
+  background:rgba(255,255,255,.25);
+  backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
   display:none;
   align-items:center;
   justify-content:center;
   z-index:999;
 }
+
 .folder-overlay.active{display:flex;}
 
+/* FOLDER WINDOW */
 .folder-content{
-  background:var(--ios-bg);
+  background:rgba(255,255,255,.94);
   border-radius:30px;
   padding:24px;
   width:90%;
   max-width:420px;
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
   animation:openFolder .25s ease;
 }
 
@@ -83,19 +131,19 @@
 
 <body>
 
-<div class="logo">Abbottlogo_2.png</div>
+<div class="logo">
+  <img src="Abbottlogo_2.png">
+</div>
 
 <div class="app-grid">
 
-<!-- ✅ 4 LIENS DIRECTS -->
-<a class="app" target="_blank"
-href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQlJFN1VFTFpBUjFTTzNJQlpKRjhQVzQ3UC4u&route=shorturl">
+<!-- ✅ APPS DIRECTES -->
+<a class="app" target="_blank" href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQlJFN1VFTFpBUjFTTzNJQlpKRjhQVzQ3UC4u&route=shorturl">
   <div class="app-icon"><img src="icon-planning.png"></div>
   <div class="app-label">Ajout planning</div>
 </a>
 
-<a class="app" target="_blank"
-href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQ0NQSkcwMlRJT1lVOEJTWFJCQUVLSEk0Ti4u">
+<a class="app" target="_blank" href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQ0NQSkcwMlRJT1lVOEJTWFJCQUVLSEk0Ti4u">
   <div class="app-icon"><img src="icon-materiel.png"></div>
   <div class="app-label">Commande matériel</div>
 </a>
@@ -110,42 +158,100 @@ href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evK
   <div class="app-label">Implant Form</div>
 </a>
 
-<!-- 📁 DOSSIERS -->
-<div class="app" onclick="openFolder('resources')"><div class="app-icon folder-icon">Ressources</div></div>
-<div class="app" onclick="openFolder('hr')"><div class="app-icon folder-icon">HR</div></div>
-<div class="app" onclick="openFolder('formation')"><div class="app-icon folder-icon">Formation</div></div>
-<div class="app" onclick="openFolder('finance')"><div class="app-icon folder-icon">Finance</div></div>
-<div class="app" onclick="openFolder('fsca')"><div class="app-icon folder-icon">FSCA</div></div>
-<div class="app" onclick="openFolder('autre')"><div class="app-icon folder-icon">Autre</div></div>
+<!-- 📁 DOSSIERS (APERÇU iOS) -->
+<div class="app" onclick="openFolder('resources')">
+  <div class="app-icon folder-icon">
+    <div class="folder-preview">
+      <img src="icon-merlin.png">
+      <img src="icon-CSP.png">
+      <img src="icon-aveir.png">
+      <img src="icon-assert.png">
+    </div>
+  </div>
+  <div class="folder-label">Ressources</div>
+</div>
+
+<div class="app" onclick="openFolder('hr')">
+  <div class="app-icon folder-icon">
+    <div class="folder-preview">
+      <img src="icon-workday.png">
+      <img src="icon-HRAdmin.png">
+      <img src="icon-securex.png">
+      <img src="icon-Edenred.png">
+    </div>
+  </div>
+  <div class="folder-label">HR</div>
+</div>
+
+<div class="app" onclick="openFolder('formation')">
+  <div class="app-icon folder-icon">
+    <div class="folder-preview">
+      <img src="icon-LERN.png">
+      <img src="icon-LMS.png">
+      <img src="icon-training.png">
+      <img src="icon-security.png">
+    </div>
+  </div>
+  <div class="folder-label">Formation</div>
+</div>
+
+<div class="app" onclick="openFolder('finance')">
+  <div class="app-icon folder-icon">
+    <div class="folder-preview">
+      <img src="icon-SAP.png">
+      <img src="icon-sdworx.png">
+      <img src="icon-equateplus.png">
+      <img src="icon-boa.png">
+    </div>
+  </div>
+  <div class="folder-label">Finance</div>
+</div>
+
+<div class="app" onclick="openFolder('fsca')">
+  <div class="app-icon folder-icon">
+    <div class="folder-preview">
+      <img src="icon-devicelookup.png">
+      <img src="icon-devicelookup.png">
+      <img src="icon-devicelookup.png">
+      <img src="icon-devicelookup.png">
+    </div>
+  </div>
+  <div class="folder-label">FSCA</div>
+</div>
+
+<div class="app" onclick="openFolder('autre')">
+  <div class="app-icon folder-icon">
+    <div class="folder-empty">Autre</div>
+  </div>
+  <div class="folder-label">Autre</div>
+</div>
 
 </div>
 
-<!-- ===== RESSOURCES ===== -->
+<!-- ================= DOSSIERS ================= -->
+
+<!-- RESSOURCES -->
 <div class="folder-overlay" id="resources" onclick="closeFolder('resources')">
 <div class="folder-content" onclick="event.stopPropagation()">
 <div class="folder-header">Ressources <span onclick="closeFolder('resources')">✕</span></div>
 <div class="folder-grid">
 
-<a class="app" target="_blank"
-href="https://forms.office.com/Pages/ResponsePage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUNVVDN1FTRVZLVUQ2OE05MjIxNVpOQlJIOS4u">
+<a class="app" target="_blank" href="https://forms.office.com/Pages/ResponsePage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUNVVDN1FTRVZLVUQ2OE05MjIxNVpOQlJIOS4u">
   <div class="app-icon"><img src="icon-merlin.png"></div>
   <div class="app-label">Commande Merlin</div>
 </a>
 
-<a class="app" target="_blank"
-href="https://abbott.sharepoint.com/sites/EMEA-CRM-BCCMktg/SitePages/EMEA%20LBBp%20Resources.aspx">
+<a class="app" target="_blank" href="https://abbott.sharepoint.com/sites/EMEA-CRM-BCCMktg/SitePages/EMEA%20LBBp%20Resources.aspx">
   <div class="app-icon"><img src="icon-CSP.png"></div>
   <div class="app-label">CSP Resources</div>
 </a>
 
-<a class="app" target="_blank"
-href="https://abbott.sharepoint.com/sites/BE-CRM-EMEAAVEIRRC/SitePages/SCHome.aspx">
+<a class="app" target="_blank" href="https://abbott.sharepoint.com/sites/BE-CRM-EMEAAVEIRRC/SitePages/SCHome.aspx">
   <div class="app-icon"><img src="icon-aveir.png"></div>
   <div class="app-label">Aveir Resources</div>
 </a>
 
-<a class="app" target="_blank"
-href="https://abbott.sharepoint.com/sites/EMEA-CRM-BCCMktg/SitePages/EMEA-ICM-Resources.aspx?ga=1">
+<a class="app" target="_blank" href="https://abbott.sharepoint.com/sites/EMEA-CRM-BCCMktg/SitePages/EMEA-ICM-Resources.aspx">
   <div class="app-icon"><img src="icon-assert.png"></div>
   <div class="app-label">Assert‑IQ Resources</div>
 </a>
@@ -160,8 +266,7 @@ href="https://abbott.sharepoint.com/sites/EMEA-CRM-BCCMktg/SitePages/EMEA-ICM-Re
   <div class="app-label">MRI Merlin</div>
 </a>
 
-<a class="app" target="_blank"
-href="https://app.powerbi.com/groups/me/apps/169567ac-bf9f-4056-b380-1fc6eaa6d185/reports/d0700510-63d1-4b7d-84bb-e9ee0abad2cb">
+<a class="app" target="_blank" href="https://app.powerbi.com/groups/me/apps/169567ac-bf9f-4056-b380-1fc6eaa6d185/reports/d0700510-63d1-4b7d-84bb-e9ee0abad2cb">
   <div class="app-icon"><img src="icon-ajm.png"></div>
   <div class="app-label">Aveir Job Manager</div>
 </a>
@@ -171,7 +276,132 @@ href="https://app.powerbi.com/groups/me/apps/169567ac-bf9f-4056-b380-1fc6eaa6d18
   <div class="app-label">GSD</div>
 </a>
 
-</div></div></div>
+</div>
+</div>
+</div>
+
+<!-- HR -->
+<div class="folder-overlay" id="hr" onclick="closeFolder('hr')">
+<div class="folder-content" onclick="event.stopPropagation()">
+<div class="folder-header">HR <span onclick="closeFolder('hr')">✕</span></div>
+<div class="folder-grid">
+
+<a class="app" target="_blank" href="https://wd5.myworkday.com/abbott/d/home.htmld">
+  <div class="app-icon"><img src="icon-workday.png"></div>
+  <div class="app-label">Workday</div>
+</a>
+
+<a class="app" target="_blank" href="https://abbott.sharepoint.com/sites/abbottHR-BE">
+  <div class="app-icon"><img src="icon-HRAdmin.png"></div>
+  <div class="app-label">HR Admin</div>
+</a>
+
+<a class="app" target="_blank" href="https://hraccent.securex.eu/hraccent/ESS2/General">
+  <div class="app-icon"><img src="icon-securex.png"></div>
+  <div class="app-label">Securex</div>
+</a>
+
+<a class="app" target="_blank" href="https://abbott.engagement.edenred.be/signin">
+  <div class="app-icon"><img src="icon-Edenred.png"></div>
+  <div class="app-label">Edenred</div>
+</a>
+
+<a class="app" target="_blank" href="https://cloud.workhuman.com/store/#/abbott">
+  <div class="app-icon"><img src="icon-awards.png"></div>
+  <div class="app-label">Abbott Awards</div>
+</a>
+
+</div>
+</div>
+</div>
+
+<!-- FORMATION -->
+<div class="folder-overlay" id="formation" onclick="closeFolder('formation')">
+<div class="folder-content" onclick="event.stopPropagation()">
+<div class="folder-header">Formation <span onclick="closeFolder('formation')">✕</span></div>
+<div class="folder-grid">
+
+<a class="app" target="_blank" href="https://abbottlabs-console.lrn.com/auth/login">
+  <div class="app-icon"><img src="icon-LERN.png"></div>
+  <div class="app-label">LERN</div>
+</a>
+
+<a class="app" target="_blank" href="https://abbottmed.sumtotal.host/rcore/c/dash/home">
+  <div class="app-icon"><img src="icon-LMS.png"></div>
+  <div class="app-label">LMS</div>
+</a>
+
+<a class="app" target="_blank" href="https://abbott.sharepoint.com/sites/abbottHR-Training/SitePages/fr/Home.aspx">
+  <div class="app-icon"><img src="icon-training.png"></div>
+  <div class="app-label">Abbott Training</div>
+</a>
+
+<a class="app" target="_blank" href="https://app.livingsecurity.com/login">
+  <div class="app-icon"><img src="icon-security.png"></div>
+  <div class="app-label">Living Security</div>
+</a>
+
+</div>
+</div>
+</div>
+
+<!-- FINANCE -->
+<div class="folder-overlay" id="finance" onclick="closeFolder('finance')">
+<div class="folder-content" onclick="event.stopPropagation()">
+<div class="folder-header">Finance <span onclick="closeFolder('finance')">✕</span></div>
+<div class="folder-grid">
+
+<a class="app" target="_blank" href="https://www.concursolutions.com/">
+  <div class="app-icon"><img src="icon-SAP.png"></div>
+  <div class="app-label">SAP</div>
+</a>
+
+<a class="app" target="_blank" href="https://auth.sdworx.com/cia/identitystore.web.loginpages/main/login?language=fr">
+  <div class="app-icon"><img src="icon-sdworx.png"></div>
+  <div class="app-label">SD Worx</div>
+</a>
+
+<a class="app" target="_blank" href="https://www.na.equateplus.com/EquatePlusParticipant2/start?login">
+  <div class="app-icon"><img src="icon-equateplus.png"></div>
+  <div class="app-label">EquatePlus</div>
+</a>
+
+<a class="app" target="_blank" href="https://spacardportal.works.com/gar/login">
+  <div class="app-icon"><img src="icon-boa.png"></div>
+  <div class="app-label">Bank of America</div>
+</a>
+
+</div>
+</div>
+</div>
+
+<!-- FSCA -->
+<div class="folder-overlay" id="fsca" onclick="closeFolder('fsca')">
+<div class="folder-content" onclick="event.stopPropagation()">
+<div class="folder-header">FSCA <span onclick="closeFolder('fsca')">✕</span></div>
+<div class="folder-grid">
+
+<a class="app" target="_blank" href="https://www.cardiovascular.abbott/int/en/hcp/product-advisories/laser-adhesion-safety-lookup.html">
+  <div class="app-icon"><img src="icon-devicelookup.png"></div>
+  <div class="app-label">Device Lookup 2022</div>
+</a>
+
+<a class="app" target="_blank" href="https://www.cardiovascular.abbott/int/en/hcp/product-advisories/pacemaker-safety-lookup-2025.html">
+  <div class="app-icon"><img src="icon-devicelookup.png"></div>
+  <div class="app-label">Device Lookup 2025</div>
+</a>
+
+</div>
+</div>
+</div>
+
+<!-- AUTRE -->
+<div class="folder-overlay" id="autre" onclick="closeFolder('autre')">
+<div class="folder-content" onclick="event.stopPropagation()">
+<div class="folder-header">Autre <span onclick="closeFolder('autre')">✕</span></div>
+<p>Aucun lien pour le moment</p>
+</div>
+</div>
 
 <script>
 function openFolder(id){document.getElementById(id).classList.add('active')}
@@ -180,16 +410,3 @@ function closeFolder(id){document.getElementById(id).classList.remove('active')}
 
 </body>
 </html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Abbott Apps</title>
-
-<style>
-:root{
-  --ios-bg:#f2f2f7;
-  --ios-card:#ffffff;
-  --abbott-blue:#004b87;
-}
-
-body{
-  margin:0;
