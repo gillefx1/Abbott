@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,21 +7,19 @@
 
 <style>
 :root{
-  --ios-bg:#f2f2f7;
-  --ios-card:#ffffff;
-  --abbott-blue:#004b87;
+  --bg:#f2f2f7;
+  --card:#ffffff;
+  --blue:#004b87;
 }
 
 body{
   margin:0;
   padding:20px 16px 40px;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
-  background:var(--ios-bg);
+  background:var(--bg);
 }
 
-.logo{text-align:center;margin:10px 0 28px;}
-.logo img{max-width:200px;}
-
+/* GRID */
 .app-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -29,216 +28,194 @@ body{
   margin:0 auto;
 }
 
+/* TILES */
 .app{
+  text-align:center;
   text-decoration:none;
   color:inherit;
-  text-align:center;
   cursor:pointer;
 }
 
 .app-icon{
-  background:var(--ios-card);
+  background:var(--card);
   border-radius:22px;
   padding:22px 0;
   box-shadow:0 8px 16px rgba(0,0,0,.08);
 }
 
-.app-icon img{width:64px;height:64px;}
-
-.app-label,.folder-label{
+.app-label{
   margin-top:10px;
   font-size:14px;
   font-weight:600;
-  color:var(--abbott-blue);
+  color:var(--blue);
 }
 
-/* Aperçu dossiers */
-.folder-icon{padding:12px;}
-.folder-preview{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:6px;
-  width:64px;
-  height:64px;
-  margin:0 auto;
-}
-.folder-preview img{width:100%;height:100%;object-fit:contain;}
-
-/* Overlay + blur iOS */
-.folder-overlay{
+/* ==== OVERLAY ==== */
+.overlay{
   position:fixed;
   inset:0;
-  background:rgba(255,255,255,.30);
+  background:rgba(255,255,255,.35);
   backdrop-filter:blur(18px) saturate(180%);
-  -webkit-backdrop-filter:blur(18px) saturate(180%);
   display:none;
   align-items:center;
   justify-content:center;
   z-index:1000;
 }
-.folder-overlay.active{display:flex;}
 
-.folder-content{
-  background:rgba(255,255,255,.94);
-  border-radius:30px;
+.overlay.active{display:flex;}
+
+.panel{
+  background:white;
+  border-radius:28px;
   padding:24px;
   width:90%;
   max-width:420px;
-  box-shadow:0 20px 40px rgba(0,0,0,.25);
-  animation:openFolder .25s ease;
 }
 
-.folder-header{
+.panel-header{
   display:flex;
   justify-content:space-between;
   font-weight:700;
-  color:var(--abbott-blue);
-  margin-bottom:18px;
+  color:var(--blue);
+  margin-bottom:16px;
 }
 
-.folder-grid{
+.panel-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:16px;
-}
-
-@keyframes openFolder{
-  from{transform:scale(.92);opacity:0}
-  to{transform:scale(1);opacity:1}
 }
 </style>
 </head>
 
 <body>
 
-<div class="logo">
-  Abbottlogo_2.png
-</div>
-
-<!-- ================= LIENS DIRECTS ================= -->
 <div class="app-grid">
 
-<!-- 1 -->
-<a class="app" target="_blank"
-   href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQlJFN1VFTFpBUjFTTzNJQlpKRjhQVzQ3UC4u&route=shorturl">
-  <div class="app-icon"><img src="icon-planning.png"></div>
+<!-- ✅ LIENS DIRECTS -->
+<a class="app" href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQlJFN1VFTFpBUjFTTzNJQlpKRjhQVzQ3UC4u&route=shorturl" target="_blank">
+  <div class="app-icon">icon-planning.png</div>
   <div class="app-label">Ajout planning</div>
 </a>
 
-<!-- 2 -->
-<a class="app" target="_blank"
-   href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQ0NQSkcwMlRJT1lVOEJTWFJCQUVLSEk0Ti4u">
-  <div class="app-icon"><img src="icon-materiel.png"></div>
+<a class="app" href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQ0NQSkcwMlRJT1lVOEJTWFJCQUVLSEk0Ti4u" target="_blank">
+  <div class="app-icon">icon-materiel.png</div>
   <div class="app-label">Commande matériel</div>
 </a>
 
-<!-- 3 -->
-<a class="app" target="_blank"
-   href="https://xiam-md.oneabbott.com/fim">
-  <div class="app-icon"><img src="icon-xiam.png"></div>
-  <div class="app-label">Consignment Count</div>
-</a>
-
-<!-- 4 (remplacement) -->
-<a class="app" target="_blank"
-   href="https://forms.cloud.microsoft/r/LGy2zXFguz">
-  <div class="app-icon"><img src="icon-form.png"></div>
+<a class="app" href="https://forms.cloud.microsoft/r/LGy2zXFguz" target="_blank">
+  <div class="app-icon">icon-form.png</div>
   <div class="app-label">Formulaire d’implantation</div>
 </a>
 
-<!-- 5 (nouveau) -->
-<a class="app" target="_blank"
-   href="https://forms.cloud.microsoft/r/ddPZnBPVP5">
-  <div class="app-icon"><img src="icon-upgrade.png"></div>
+<a class="app" href="https://forms.cloud.microsoft/r/ddPZnBPVP5" target="_blank">
+  <div class="app-icon">icon-upgrade.png</div>
   <div class="app-label">Merlin Upgrade</div>
 </a>
 
+<!-- ✅ DOSSIERS -->
+<div class="app" onclick="open('merlin')"><div class="app-icon">📁</div><div class="app-label">Merlin</div></div>
+<div class="app" onclick="open('resources')"><div class="app-icon">📁</div><div class="app-label">Ressources</div></div>
+<div class="app" onclick="open('hr')"><div class="app-icon">📁</div><div class="app-label">HR</div></div>
+<div class="app" onclick="open('formation')"><div class="app-icon">📁</div><div class="app-label">Formation</div></div>
+<div class="app" onclick="open('finance')"><div class="app-icon">📁</div><div class="app-label">Finance</div></div>
+<div class="app" onclick="open('fsca')"><div class="app-icon">📁</div><div class="app-label">FSCA</div></div>
+<div class="app" onclick="open('autre')"><div class="app-icon">📁</div><div class="app-label">Autre</div></div>
+
+</div>
+
 <!-- ================= DOSSIERS ================= -->
 
-<div class="app" onclick="openFolder('merlin')">
-  <div class="app-icon folder-icon">
-    <div class="folder-preview">
-      <img src="icon-merlin.png">
-      <img src="icon-merlin.png">
-      <img src="icon-merlin.png">
+<div class="overlay" id="merlin" onclick="closeAll(event)">
+  <div class="panel">
+    <div class="panel-header">Merlin <span onclick="closeAll()">✕</span></div>
+    <div class="panel-grid">
+      <a class="app" href="https://forms.office.com/Pages/ResponsePage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUNVVDN1FTRVZLVUQ2OE05MjIxNVpOQlJIOS4u" target="_blank">Commande Merlin</a>
+      <a class="app" href="https://www.merlin.net/" target="_blank">Merlin.Net</a>
+      <a class="app" href="https://mri.merlin.net/" target="_blank">MRI Merlin</a>
     </div>
   </div>
-  <div class="folder-label">Merlin</div>
 </div>
 
-<div class="app" onclick="openFolder('resources')">
-  <div class="app-icon folder-icon">
-    <div class="folder-preview">
-      <img src="icon-CSP.png">
-      <img src="icon-aveir.png">
-      <img src="icon-assert.png">
+<div class="overlay" id="resources" onclick="closeAll(event)">
+  <div class="panel">
+    <div class="panel-header">Ressources <span onclick="closeAll()">✕</span></div>
+    <div class="panel-grid">
+      <a class="app" href="https://abbott.sharepoint.com/sites/EMEA-CRM-BCCMktg/SitePages/EMEA%20LBBp%20Resources.aspx" target="_blank">CSP Resources</a>
+      <a class="app" href="https://abbott.sharepoint.com/sites/BE-CRM-EMEAAVEIRRC/SitePages/SCHome.aspx" target="_blank">Aveir Resources</a>
+      <a class="app" href="https://abbott.sharepoint.com/sites/EMEA-CRM-BCCMktg/SitePages/EMEA-ICM-Resources.aspx" target="_blank">Assert‑IQ Resources</a>
     </div>
   </div>
-  <div class="folder-label">Ressources</div>
 </div>
 
-<div class="app" onclick="openFolder('hr')">
-  <div class="app-icon folder-icon">
-    <div class="folder-preview">
-      <img src="icon-workday.png">
-      <img src="icon-HRAdmin.png">
-      <img src="icon-securex.png">
-      <img src="icon-Edenred.png">
+<div class="overlay" id="hr" onclick="closeAll(event)">
+  <div class="panel">
+    <div class="panel-header">HR <span onclick="closeAll()">✕</span></div>
+    <div class="panel-grid">
+      <a class="app" href="https://wd5.myworkday.com/abbott/d/home.htmld" target="_blank">Workday</a>
+      <a class="app" href="https://abbott.sharepoint.com/sites/abbottHR-BE" target="_blank">HR Admin</a>
+      <a class="app" href="https://hraccent.securex.eu/hraccent/ESS2/General" target="_blank">Securex</a>
+      <a class="app" href="https://abbott.engagement.edenred.be/signin" target="_blank">Edenred</a>
+      <a class="app" href="https://cloud.workhuman.com/store/#/abbott" target="_blank">Abbott Awards</a>
     </div>
   </div>
-  <div class="folder-label">HR</div>
 </div>
 
-<div class="app" onclick="openFolder('formation')">
-  <div class="app-icon folder-icon">
-    <div class="folder-preview">
-      <img src="icon-LERN.png">
-      <img src="icon-LMS.png">
-      <img src="icon-training.png">
-      <img src="icon-security.png">
+<div class="overlay" id="formation" onclick="closeAll(event)">
+  <div class="panel">
+    <div class="panel-header">Formation <span onclick="closeAll()">✕</span></div>
+    <div class="panel-grid">
+      <a class="app" href="https://abbottlabs-console.lrn.com/auth/login" target="_blank">LERN</a>
+      <a class="app" href="https://abbottmed.sumtotal.host/rcore/c/dash/home" target="_blank">LMS</a>
+      <a class="app" href="https://abbott.sharepoint.com/sites/abbottHR-Training/SitePages/fr/Home.aspx" target="_blank">Abbott Training</a>
+      <a class="app" href="https://app.livingsecurity.com/login" target="_blank">Living Security</a>
     </div>
   </div>
-  <div class="folder-label">Formation</div>
 </div>
 
-<div class="app" onclick="openFolder('finance')">
-  <div class="app-icon folder-icon">
-    <div class="folder-preview">
-      <img src="icon-SAP.png">
-      <img src="icon-sdworx.png">
-      <img src="icon-equateplus.png">
-      <img src="icon-boa.png">
+<div class="overlay" id="finance" onclick="closeAll(event)">
+  <div class="panel">
+    <div class="panel-header">Finance <span onclick="closeAll()">✕</span></div>
+    <div class="panel-grid">
+      <a class="app" href="https://www.concursolutions.com/" target="_blank">SAP</a>
+      <a class="app" href="https://auth.sdworx.com/cia/identitystore.web.loginpages/main/login?language=fr" target="_blank">My SD Worx</a>
+      <a class="app" href="https://www.na.equateplus.com/EquatePlusParticipant2/start?login" target="_blank">EquatePlus</a>
+      <a class="app" href="https://spacardportal.works.com/gar/login" target="_blank">Bank of America</a>
     </div>
   </div>
-  <div class="folder-label">Finance</div>
 </div>
 
-<div class="app" onclick="openFolder('fsca')">
-  <div class="app-icon folder-icon">
-    <div class="folder-preview">
-      <img src="icon-devicelookup.png">
-      <img src="icon-devicelookup.png">
+<div class="overlay" id="fsca" onclick="closeAll(event)">
+  <div class="panel">
+    <div class="panel-header">FSCA <span onclick="closeAll()">✕</span></div>
+    <div class="panel-grid">
+      <a class="app" href="https://www.cardiovascular.abbott/int/en/hcp/product-advisories/laser-adhesion-safety-lookup.html" target="_blank">Device Lookup 2022</a>
+      <a class="app" href="https://www.cardiovascular.abbott/int/en/hcp/product-advisories/pacemaker-safety-lookup-2025.html" target="_blank">Device Lookup 2025</a>
     </div>
   </div>
-  <div class="folder-label">FSCA</div>
 </div>
 
-<div class="app" onclick="openFolder('autre')">
-  <div class="app-icon folder-icon">
-    <div class="folder-preview">
-      <img src="icon-ajm.png">
-      <img src="icon-gsd.png">
-      <img src="icon-epiq.png">
+<div class="overlay" id="autre" onclick="closeAll(event)">
+  <div class="panel">
+    <div class="panel-header">Autre <span onclick="closeAll()">✕</span></div>
+    <div class="panel-grid">
+      <a class="app" href="https://xiam-md.oneabbott.com/fim" target="_blank">Consignment Count</a>
+      <a class="app" href="https://app.powerbi.com/groups/me/apps/169567ac-bf9f-4056-b380-1fc6eaa6d185/reports/d0700510-63d1-4b7d-84bb-e9ee0abad2cb" target="_blank">Aveir Job Manager</a>
+      <a class="app" href="https://abbottprod.service-now.com/esc" target="_blank">GSD</a>
+      <a class="app" href="https://abbott.etq.com/prod/reliance" target="_blank">EPIQ</a>
     </div>
   </div>
-  <div class="folder-label">Autre</div>
-</div>
-
 </div>
 
 <script>
-function openFolder(id){document.getElementById(id).classList.add('active')}
-function closeFolder(id){document.getElementById(id).classList.remove('active')}
+function open(id){
+  document.getElementById(id).classList.add('active');
+}
+function closeAll(e){
+  if(!e || e.target.classList.contains('overlay')){
+    document.querySelectorAll('.overlay').forEach(o=>o.classList.remove('active'));
+  }
+}
 </script>
 
 </body>
