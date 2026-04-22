@@ -1,5 +1,5 @@
 
-<!DOCTYPE html><">
+<!DOCTYPE html><html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,16 +19,16 @@ body{
   background:var(--bg);
 }
 
-/* ===== LOGO ===== */
+/* Logo */
 .logo{
   text-align:center;
-  margin:10px 0 28px;
+  margin:10px 0 30px;
 }
 .logo img{
   max-width:180px;
 }
 
-/* ===== GRID ===== */
+/* Grid principale */
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -37,12 +37,11 @@ body{
   margin:0 auto;
 }
 
-/* ===== TILE ===== */
+/* Tuile app */
 .tile{
-  text-align:center;
   text-decoration:none;
   color:inherit;
-  cursor:pointer;
+  text-align:center;
 }
 
 .tile-icon{
@@ -51,12 +50,10 @@ body{
   padding:20px 0;
   box-shadow:0 8px 16px rgba(0,0,0,.08);
 }
-
 .tile-icon img{
   width:64px;
   height:64px;
 }
-
 .tile-label{
   margin-top:10px;
   font-size:14px;
@@ -64,14 +61,14 @@ body{
   color:var(--blue);
 }
 
-/* ===== DOSSIER (aperçu iOS) ===== */
+/* Aperçu dossier (iOS) */
 .folder-preview{
   width:64px;
   height:64px;
+  margin:0 auto;
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:6px;
-  margin:0 auto;
 }
 .folder-preview img{
   width:100%;
@@ -79,7 +76,7 @@ body{
   object-fit:contain;
 }
 
-/* ===== OVERLAY ===== */
+/* Overlay */
 .overlay{
   position:fixed;
   inset:0;
@@ -91,7 +88,7 @@ body{
 }
 .overlay.active{display:flex;}
 
-/* ===== DOSSIER OUVERT ===== */
+/* Fenêtre dossier */
 .panel{
   background:white;
   border-radius:30px;
@@ -121,30 +118,30 @@ body{
   <img src="Abbottlogo_2.png" alt="Abbott">
 </div>
 
-<!-- ================== GRILLE PRINCIPALE ================== -->
+<!-- GRILLE PRINCIPALE -->
 <div class="grid">
 
-<!-- LIENS DIRECTS -->
+<!-- APPS DIRECTES -->
 <a class="tile" target="_blank" rel="noopener noreferrer"
-   href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQlJFN1VFTFpBUjFTTzNJQlpKRjhQVzQ3UC4u&route=shorturl">
+ href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQlJFN1VFTFpBUjFTTzNJQlpKRjhQVzQ3UC4u&route=shorturl">
   <div class="tile-icon"><img src="icon-planning.png"></div>
   <div class="tile-label">Ajout planning</div>
 </a>
 
 <a class="tile" target="_blank" rel="noopener noreferrer"
-   href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQ0NQSkcwMlRJT1lVOEJTWFJCQUVLSEk0Ti4u">
+ href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQ0NQSkcwMlRJT1lVOEJTWFJCQUVLSEk0Ti4u">
   <div class="tile-icon"><img src="icon-materiel.png"></div>
   <div class="tile-label">Commande matériel</div>
 </a>
 
 <a class="tile" target="_blank" rel="noopener noreferrer"
-   href="https://forms.cloud.microsoft/r/LGy2zXFguz">
+ href="https://forms.cloud.microsoft/r/LGy2zXFguz">
   <div class="tile-icon"><img src="icon-form.png"></div>
   <div class="tile-label">Formulaire d’implantation</div>
 </a>
 
 <a class="tile" target="_blank" rel="noopener noreferrer"
-   href="https://forms.cloud.microsoft/r/ddPZnBPVP5">
+ href="https://forms.cloud.microsoft/r/ddPZnBPVP5">
   <div class="tile-icon"><img src="icon-upgrade.png"></div>
   <div class="tile-label">Merlin Upgrade</div>
 </a>
@@ -153,8 +150,8 @@ body{
 <div class="tile" onclick="openFolder('merlin')">
   <div class="tile-icon">
     <div class="folder-preview">
-      <img src="icon-merlin.png"><img src="icon-merlin.png">
-      <img src="icon-merlin.png"><img src="icon-merlin.png">
+      <img src="icon-merlin.png"><img src="icon-merlinorder.png">
+      <img src="icon-mri.png">
     </div>
   </div>
   <div class="tile-label">Merlin</div>
@@ -221,31 +218,199 @@ body{
 
 </div>
 
-<!-- ================== OVERLAYS ================== -->
+<!-- ================= OVERLAYS ================= -->
 <script>
-function openFolder(id){document.getElementById(id).classList.add('active');}
-function closeFolder(id){document.getElementById(id).classList.remove('active');}
+function openFolder(id){ document.getElementById(id).classList.add('active'); }
+function closeFolder(id){ document.getElementById(id).classList.remove('active'); }
 </script>
 
 <!-- ===== MERLIN ===== -->
 <div class="overlay" id="merlin" onclick="closeFolder('merlin')">
-  <div class="panel" onclick="event.stopPropagation()">
-    <div class="panel-header">Merlin <span onclick="closeFolder('merlin')">✕</span></div>
-    <div class="panel-grid">
-      <a class="tile" target="_blank" rel="noopener noreferrer" href="https://forms.office.com/">
-        <div class="tile-icon"><img src="icon-merlin.png"></div><div class="tile-label">Commande Merlin</div>
-      </a>
-      <a class="tile" target="_blank" rel="noopener noreferrer" href="https://www.merlin.net/">
-        <div class="tile-icon"><img src="icon-merlin.png"></div><div class="tile-label">Merlin.Net</div>
-      </a>
-      <a class="tile" target="_blank" rel="noopener noreferrer" href="https://mri.merlin.net/">
-        <div class="tile-icon"><img src="icon-merlin.png"></div><div class="tile-label">MRI Merlin</div>
-      </a>
-    </div>
-  </div>
+<div class="panel" onclick="event.stopPropagation()">
+<div class="panel-header">Merlin <span onclick="closeFolder('merlin')">✕</span></div>
+<div class="panel-grid">
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://forms.office.com/">
+    <div class="tile-icon"><img src="icon-merlinorder.png"></div>
+    <div class="tile-label">Commande Merlin</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://www.merlin.net/">
+    <div class="tile-icon"><img src="icon-merlin.png"></div>
+    <div class="tile-label">Merlin.Net</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://mri.merlin.net/">
+    <div class="tile-icon"><img src="icon-mri.png"></div>
+    <div class="tile-label">MRI Merlin</div>
+  </a>
+</div>
+</div>
 </div>
 
-<!-- LES AUTRES OVERLAYS (Ressources, HR, Formation, Finance, FSCA, Autre) SONT STRUCTURÉS DE LA MÊME MANIÈRE -->
+<!-- ===== RESSOURCES ===== -->
+<div class="overlay" id="resources" onclick="closeFolder('resources')">
+<div class="panel" onclick="event.stopPropagation()">
+<div class="panel-header">Ressources <span onclick="closeFolder('resources')">✕</span></div>
+<div class="panel-grid">
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://abbott.sharepoint.com/sites/EMEA-CRM-BCCMktg/SitePages/EMEA%20LBBp%20Resources.aspx">
+    <div class="tile-icon"><img src="icon-CSP.png"></div>
+    <div class="tile-label">CSP Resources</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://abbott.sharepoint.com/sites/BE-CRM-EMEAAVEIRRC/SitePages/SCHome.aspx">
+    <div class="tile-icon"><img src="icon-aveir.png"></div>
+    <div class="tile-label">Aveir Resources</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://abbott.sharepoint.com/sites/EMEA-CRM-BCCMktg/SitePages/EMEA-ICM-Resources.aspx">
+    <div class="tile-icon"><img src="icon-assert.png"></div>
+    <div class="tile-label">Assert-IQ Resources</div>
+  </a>
+</div>
+</div>
+</div>
+
+<!-- ===== HR ===== -->
+<div class="overlay" id="hr" onclick="closeFolder('hr')">
+<div class="panel" onclick="event.stopPropagation()">
+<div class="panel-header">HR <span onclick="closeFolder('hr')">✕</span></div>
+<div class="panel-grid">
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://wd5.myworkday.com/abbott/d/home.htmld">
+    <div class="tile-icon"><img src="icon-workday.png"></div>
+    <div class="tile-label">Workday</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://abbott.sharepoint.com/sites/abbottHR-BE">
+    <div class="tile-icon"><img src="icon-HRAdmin.png"></div>
+    <div class="tile-label">HR Admin</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://hraccent.securex.eu/hraccent/ESS2/General">
+    <div class="tile-icon"><img src="icon-securex.png"></div>
+    <div class="tile-label">Securex</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://abbott.engagement.edenred.be/signin">
+    <div class="tile-icon"><img src="icon-Edenred.png"></div>
+    <div class="tile-label">Edenred</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://cloud.workhuman.com/store/#/abbott">
+    <div class="tile-icon"><img src="icon-awards.png"></div>
+    <div class="tile-label">Abbott Awards</div>
+  </a>
+</div>
+</div>
+</div>
+
+<!-- ===== FORMATION ===== -->
+<div class="overlay" id="formation" onclick="closeFolder('formation')">
+<div class="panel" onclick="event.stopPropagation()">
+<div class="panel-header">Formation <span onclick="closeFolder('formation')">✕</span></div>
+<div class="panel-grid">
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://abbottlabs-console.lrn.com/auth/login">
+    <div class="tile-icon"><img src="icon-LERN.png"></div>
+    <div class="tile-label">LERN</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://abbottmed.sumtotal.host/rcore/c/dash/home">
+    <div class="tile-icon"><img src="icon-LMS.png"></div>
+    <div class="tile-label">LMS</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://abbott.sharepoint.com/sites/abbottHR-Training/SitePages/fr/Home.aspx">
+    <div class="tile-icon"><img src="icon-training.png"></div>
+    <div class="tile-label">Abbott Training</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://app.livingsecurity.com/login">
+    <div class="tile-icon"><img src="icon-security.png"></div>
+    <div class="tile-label">Living Security</div>
+  </a>
+</div>
+</div>
+</div>
+
+<!-- ===== FINANCE ===== -->
+<div class="overlay" id="finance" onclick="closeFolder('finance')">
+<div class="panel" onclick="event.stopPropagation()">
+<div class="panel-header">Finance <span onclick="closeFolder('finance')">✕</span></div>
+<div class="panel-grid">
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://www.concursolutions.com/">
+    <div class="tile-icon"><img src="icon-SAP.png"></div>
+    <div class="tile-label">SAP Concur</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://auth.sdworx.com/cia/identitystore.web.loginpages/main/login?language=fr">
+    <div class="tile-icon"><img src="icon-sdworx.png"></div>
+    <div class="tile-label">My SD Worx</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://www.na.equateplus.com/EquatePlusParticipant2/start?login">
+    <div class="tile-icon"><img src="icon-equateplus.png"></div>
+    <div class="tile-label">EquatePlus</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://spacardportal.works.com/gar/login">
+    <div class="tile-icon"><img src="icon-boa.png"></div>
+    <div class="tile-label">Bank of America</div>
+  </a>
+</div>
+</div>
+</div>
+
+<!-- ===== FSCA ===== -->
+<div class="overlay" id="fsca" onclick="closeFolder('fsca')">
+<div class="panel" onclick="event.stopPropagation()">
+<div class="panel-header">FSCA <span onclick="closeFolder('fsca')">✕</span></div>
+<div class="panel-grid">
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://www.cardiovascular.abbott/int/en/hcp/product-advisories/laser-adhesion-safety-lookup.html">
+    <div class="tile-icon"><img src="icon-devicelookup.png"></div>
+    <div class="tile-label">Device Lookup 2022</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://www.cardiovascular.abbott/int/en/hcp/product-advisories/pacemaker-safety-lookup-2025.html">
+    <div class="tile-icon"><img src="icon-devicelookup.png"></div>
+    <div class="tile-label">Device Lookup 2025</div>
+  </a>
+</div>
+</div>
+</div>
+
+<!-- ===== AUTRE ===== -->
+<div class="overlay" id="autre" onclick="closeFolder('autre')">
+<div class="panel" onclick="event.stopPropagation()">
+<div class="panel-header">Autre <span onclick="closeFolder('autre')">✕</span></div>
+<div class="panel-grid">
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://xiam-md.oneabbott.com/fim">
+    <div class="tile-icon"><img src="icon-xiam.png"></div>
+    <div class="tile-label">Consignment Count</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://app.powerbi.com/groups/me/apps/169567ac-bf9f-4056-b380-1fc6eaa6d185/reports/d0700510-63d1-4b7d-84bb-e9ee0abad2cb">
+    <div class="tile-icon"><img src="icon-ajm.png"></div>
+    <div class="tile-label">Aveir Job Manager</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://abbottprod.service-now.com/esc">
+    <div class="tile-icon"><img src="icon-gsd.png"></div>
+    <div class="tile-label">GSD</div>
+  </a>
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://abbott.etq.com/prod/reliance">
+    <div class="tile-icon"><img src="icon-epiq.png"></div>
+    <div class="tile-label">EPIQ</div>
+  </a>
+</div>
+</div>
+</div>
 
 </body>
 </html>
