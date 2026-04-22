@@ -6,12 +6,14 @@
 <title>Abbott Apps</title>
 
 <style>
+/* ===== VARIABLES ===== */
 :root{
   --ios-bg:#f2f2f7;
   --ios-card:#ffffff;
   --abbott-blue:#004b87;
 }
 
+/* ===== BASE ===== */
 body{
   margin:0;
   padding:20px 16px 40px;
@@ -19,11 +21,9 @@ body{
   background:var(--ios-bg);
 }
 
-/* LOGO */
 .logo{text-align:center;margin:10px 0 28px;}
 .logo img{max-width:200px;}
 
-/* GRID */
 .app-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -32,13 +32,8 @@ body{
   margin:0 auto;
 }
 
-/* APP */
-.app{
-  text-decoration:none;
-  color:inherit;
-  text-align:center;
-  cursor:pointer;
-}
+/* ===== APP ===== */
+.app{text-decoration:none;color:inherit;text-align:center;cursor:pointer;}
 
 .app-icon{
   background:var(--ios-card);
@@ -56,8 +51,9 @@ body{
   color:var(--abbott-blue);
 }
 
-/* FOLDER PREVIEW */
+/* ===== DOSSIERS – APERÇU ===== */
 .folder-icon{padding:12px;}
+
 .folder-preview{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -82,7 +78,7 @@ body{
   color:var(--abbott-blue);
 }
 
-/* BLUR OVERLAY */
+/* ===== OVERLAY BLUR iOS ===== */
 .folder-overlay{
   position:fixed;
   inset:0;
@@ -94,10 +90,8 @@ body{
   justify-content:center;
   z-index:999;
 }
-
 .folder-overlay.active{display:flex;}
 
-/* FOLDER WINDOW */
 .folder-content{
   background:rgba(255,255,255,.94);
   border-radius:30px;
@@ -131,13 +125,12 @@ body{
 
 <body>
 
-<div class="logo">
-  <img src="Abbottlogo_2.png">
-</div>
+<div class="logo">Abbottlogo_2.png</div>
 
+<!-- ================= APPS ================= -->
 <div class="app-grid">
 
-<!-- ✅ APPS DIRECTES -->
+<!-- 4 APPS DIRECTES -->
 <a class="app" target="_blank" href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQlJFN1VFTFpBUjFTTzNJQlpKRjhQVzQ3UC4u&route=shorturl">
   <div class="app-icon"><img src="icon-planning.png"></div>
   <div class="app-label">Ajout planning</div>
@@ -158,7 +151,7 @@ body{
   <div class="app-label">Implant Form</div>
 </a>
 
-<!-- 📁 DOSSIERS (APERÇU iOS) -->
+<!-- DOSSIERS -->
 <div class="app" onclick="openFolder('resources')">
   <div class="app-icon folder-icon">
     <div class="folder-preview">
@@ -228,12 +221,11 @@ body{
 
 </div>
 
-<!-- ================= DOSSIERS ================= -->
-
-<!-- RESSOURCES -->
+<!-- ================= RESSOURCES ================= -->
 <div class="folder-overlay" id="resources" onclick="closeFolder('resources')">
 <div class="folder-content" onclick="event.stopPropagation()">
 <div class="folder-header">Ressources <span onclick="closeFolder('resources')">✕</span></div>
+
 <div class="folder-grid">
 
 <a class="app" target="_blank" href="https://forms.office.com/Pages/ResponsePage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUNVVDN1FTRVZLVUQ2OE05MjIxNVpOQlJIOS4u">
@@ -276,130 +268,13 @@ body{
   <div class="app-label">GSD</div>
 </a>
 
-</div>
-</div>
-</div>
-
-<!-- HR -->
-<div class="folder-overlay" id="hr" onclick="closeFolder('hr')">
-<div class="folder-content" onclick="event.stopPropagation()">
-<div class="folder-header">HR <span onclick="closeFolder('hr')">✕</span></div>
-<div class="folder-grid">
-
-<a class="app" target="_blank" href="https://wd5.myworkday.com/abbott/d/home.htmld">
-  <div class="app-icon"><img src="icon-workday.png"></div>
-  <div class="app-label">Workday</div>
-</a>
-
-<a class="app" target="_blank" href="https://abbott.sharepoint.com/sites/abbottHR-BE">
-  <div class="app-icon"><img src="icon-HRAdmin.png"></div>
-  <div class="app-label">HR Admin</div>
-</a>
-
-<a class="app" target="_blank" href="https://hraccent.securex.eu/hraccent/ESS2/General">
-  <div class="app-icon"><img src="icon-securex.png"></div>
-  <div class="app-label">Securex</div>
-</a>
-
-<a class="app" target="_blank" href="https://abbott.engagement.edenred.be/signin">
-  <div class="app-icon"><img src="icon-Edenred.png"></div>
-  <div class="app-label">Edenred</div>
-</a>
-
-<a class="app" target="_blank" href="https://cloud.workhuman.com/store/#/abbott">
-  <div class="app-icon"><img src="icon-awards.png"></div>
-  <div class="app-label">Abbott Awards</div>
+<!-- ✅ EPIQ AJOUTÉ -->
+<a class="app" target="_blank" href="https://abbott.etq.com/prod/reliance">
+  <div class="app-icon"><img src="icon-epiq.png"></div>
+  <div class="app-label">EPIQ</div>
 </a>
 
 </div>
-</div>
-</div>
-
-<!-- FORMATION -->
-<div class="folder-overlay" id="formation" onclick="closeFolder('formation')">
-<div class="folder-content" onclick="event.stopPropagation()">
-<div class="folder-header">Formation <span onclick="closeFolder('formation')">✕</span></div>
-<div class="folder-grid">
-
-<a class="app" target="_blank" href="https://abbottlabs-console.lrn.com/auth/login">
-  <div class="app-icon"><img src="icon-LERN.png"></div>
-  <div class="app-label">LERN</div>
-</a>
-
-<a class="app" target="_blank" href="https://abbottmed.sumtotal.host/rcore/c/dash/home">
-  <div class="app-icon"><img src="icon-LMS.png"></div>
-  <div class="app-label">LMS</div>
-</a>
-
-<a class="app" target="_blank" href="https://abbott.sharepoint.com/sites/abbottHR-Training/SitePages/fr/Home.aspx">
-  <div class="app-icon"><img src="icon-training.png"></div>
-  <div class="app-label">Abbott Training</div>
-</a>
-
-<a class="app" target="_blank" href="https://app.livingsecurity.com/login">
-  <div class="app-icon"><img src="icon-security.png"></div>
-  <div class="app-label">Living Security</div>
-</a>
-
-</div>
-</div>
-</div>
-
-<!-- FINANCE -->
-<div class="folder-overlay" id="finance" onclick="closeFolder('finance')">
-<div class="folder-content" onclick="event.stopPropagation()">
-<div class="folder-header">Finance <span onclick="closeFolder('finance')">✕</span></div>
-<div class="folder-grid">
-
-<a class="app" target="_blank" href="https://www.concursolutions.com/">
-  <div class="app-icon"><img src="icon-SAP.png"></div>
-  <div class="app-label">SAP</div>
-</a>
-
-<a class="app" target="_blank" href="https://auth.sdworx.com/cia/identitystore.web.loginpages/main/login?language=fr">
-  <div class="app-icon"><img src="icon-sdworx.png"></div>
-  <div class="app-label">SD Worx</div>
-</a>
-
-<a class="app" target="_blank" href="https://www.na.equateplus.com/EquatePlusParticipant2/start?login">
-  <div class="app-icon"><img src="icon-equateplus.png"></div>
-  <div class="app-label">EquatePlus</div>
-</a>
-
-<a class="app" target="_blank" href="https://spacardportal.works.com/gar/login">
-  <div class="app-icon"><img src="icon-boa.png"></div>
-  <div class="app-label">Bank of America</div>
-</a>
-
-</div>
-</div>
-</div>
-
-<!-- FSCA -->
-<div class="folder-overlay" id="fsca" onclick="closeFolder('fsca')">
-<div class="folder-content" onclick="event.stopPropagation()">
-<div class="folder-header">FSCA <span onclick="closeFolder('fsca')">✕</span></div>
-<div class="folder-grid">
-
-<a class="app" target="_blank" href="https://www.cardiovascular.abbott/int/en/hcp/product-advisories/laser-adhesion-safety-lookup.html">
-  <div class="app-icon"><img src="icon-devicelookup.png"></div>
-  <div class="app-label">Device Lookup 2022</div>
-</a>
-
-<a class="app" target="_blank" href="https://www.cardiovascular.abbott/int/en/hcp/product-advisories/pacemaker-safety-lookup-2025.html">
-  <div class="app-icon"><img src="icon-devicelookup.png"></div>
-  <div class="app-label">Device Lookup 2025</div>
-</a>
-
-</div>
-</div>
-</div>
-
-<!-- AUTRE -->
-<div class="folder-overlay" id="autre" onclick="closeFolder('autre')">
-<div class="folder-content" onclick="event.stopPropagation()">
-<div class="folder-header">Autre <span onclick="closeFolder('autre')">✕</span></div>
-<p>Aucun lien pour le moment</p>
 </div>
 </div>
 
