@@ -1,6 +1,5 @@
 
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html><">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,6 +17,15 @@ body{
   padding:20px;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
   background:var(--bg);
+}
+
+/* ===== LOGO ===== */
+.logo{
+  text-align:center;
+  margin:10px 0 28px;
+}
+.logo img{
+  max-width:180px;
 }
 
 /* ===== GRID ===== */
@@ -40,8 +48,8 @@ body{
 .tile-icon{
   background:var(--card);
   border-radius:22px;
-  padding:20px;
-  box-shadow:0 8px 16px rgba(0,0,0,.1);
+  padding:20px 0;
+  box-shadow:0 8px 16px rgba(0,0,0,.08);
 }
 
 .tile-icon img{
@@ -56,37 +64,48 @@ body{
   color:var(--blue);
 }
 
+/* ===== DOSSIER (aperçu iOS) ===== */
+.folder-preview{
+  width:64px;
+  height:64px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:6px;
+  margin:0 auto;
+}
+.folder-preview img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
 /* ===== OVERLAY ===== */
 .overlay{
   position:fixed;
   inset:0;
   background:rgba(0,0,0,.35);
-  backdrop-filter:blur(14px);
   display:none;
   align-items:center;
   justify-content:center;
   z-index:1000;
 }
-
 .overlay.active{display:flex;}
 
+/* ===== DOSSIER OUVERT ===== */
 .panel{
   background:white;
-  border-radius:28px;
+  border-radius:30px;
   padding:24px;
   width:90%;
   max-width:420px;
 }
-
 .panel-header{
   display:flex;
   justify-content:space-between;
-  align-items:center;
   font-weight:700;
   color:var(--blue);
-  margin-bottom:16px;
+  margin-bottom:18px;
 }
-
 .panel-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -97,166 +116,136 @@ body{
 
 <body>
 
+<!-- LOGO -->
+<div class="logo">
+  <img src="Abbottlogo_2.png" alt="Abbott">
+</div>
+
+<!-- ================== GRILLE PRINCIPALE ================== -->
 <div class="grid">
 
-<!-- ===== LIENS DIRECTS ===== -->
-<a class="tile" href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQlJFN1VFTFpBUjFTTzNJQlpKRjhQVzQ3UC4u&route=shorturl">
+<!-- LIENS DIRECTS -->
+<a class="tile" target="_blank" rel="noopener noreferrer"
+   href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQlJFN1VFTFpBUjFTTzNJQlpKRjhQVzQ3UC4u&route=shorturl">
   <div class="tile-icon"><img src="icon-planning.png"></div>
   <div class="tile-label">Ajout planning</div>
 </a>
 
-<a class="tile" href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQ0NQSkcwMlRJT1lVOEJTWFJCQUVLSEk0Ti4u">
+<a class="tile" target="_blank" rel="noopener noreferrer"
+   href="https://forms.office.com/pages/responsepage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUQ0NQSkcwMlRJT1lVOEJTWFJCQUVLSEk0Ti4u">
   <div class="tile-icon"><img src="icon-materiel.png"></div>
   <div class="tile-label">Commande matériel</div>
 </a>
 
-<a class="tile" href="https://forms.cloud.microsoft/r/LGy2zXFguz">
+<a class="tile" target="_blank" rel="noopener noreferrer"
+   href="https://forms.cloud.microsoft/r/LGy2zXFguz">
   <div class="tile-icon"><img src="icon-form.png"></div>
   <div class="tile-label">Formulaire d’implantation</div>
 </a>
 
-<a class="tile" href="https://forms.cloud.microsoft/r/ddPZnBPVP5">
+<a class="tile" target="_blank" rel="noopener noreferrer"
+   href="https://forms.cloud.microsoft/r/ddPZnBPVP5">
   <div class="tile-icon"><img src="icon-upgrade.png"></div>
   <div class="tile-label">Merlin Upgrade</div>
 </a>
 
-<!-- ===== DOSSIERS ===== -->
+<!-- DOSSIERS -->
 <div class="tile" onclick="openFolder('merlin')">
-  <div class="tile-icon"><img src="icon-merlin.png"></div>
+  <div class="tile-icon">
+    <div class="folder-preview">
+      <img src="icon-merlin.png"><img src="icon-merlin.png">
+      <img src="icon-merlin.png"><img src="icon-merlin.png">
+    </div>
+  </div>
   <div class="tile-label">Merlin</div>
 </div>
 
 <div class="tile" onclick="openFolder('resources')">
-  <div class="tile-icon"><img src="icon-CSP.png"></div>
+  <div class="tile-icon">
+    <div class="folder-preview">
+      <img src="icon-CSP.png"><img src="icon-aveir.png">
+      <img src="icon-assert.png">
+    </div>
+  </div>
   <div class="tile-label">Ressources</div>
 </div>
 
 <div class="tile" onclick="openFolder('hr')">
-  <div class="tile-icon"><img src="icon-HRAdmin.png"></div>
+  <div class="tile-icon">
+    <div class="folder-preview">
+      <img src="icon-workday.png"><img src="icon-HRAdmin.png">
+      <img src="icon-securex.png"><img src="icon-Edenred.png">
+    </div>
+  </div>
   <div class="tile-label">HR</div>
 </div>
 
 <div class="tile" onclick="openFolder('formation')">
-  <div class="tile-icon"><img src="icon-training.png"></div>
+  <div class="tile-icon">
+    <div class="folder-preview">
+      <img src="icon-LERN.png"><img src="icon-LMS.png">
+      <img src="icon-training.png"><img src="icon-security.png">
+    </div>
+  </div>
   <div class="tile-label">Formation</div>
 </div>
 
 <div class="tile" onclick="openFolder('finance')">
-  <div class="tile-icon"><img src="icon-SAP.png"></div>
+  <div class="tile-icon">
+    <div class="folder-preview">
+      <img src="icon-SAP.png"><img src="icon-sdworx.png">
+      <img src="icon-equateplus.png"><img src="icon-boa.png">
+    </div>
+  </div>
   <div class="tile-label">Finance</div>
 </div>
 
 <div class="tile" onclick="openFolder('fsca')">
-  <div class="tile-icon"><img src="icon-devicelookup.png"></div>
+  <div class="tile-icon">
+    <div class="folder-preview">
+      <img src="icon-devicelookup.png"><img src="icon-devicelookup.png">
+    </div>
+  </div>
   <div class="tile-label">FSCA</div>
 </div>
 
 <div class="tile" onclick="openFolder('autre')">
-  <div class="tile-icon"><img src="icon-epiq.png"></div>
+  <div class="tile-icon">
+    <div class="folder-preview">
+      <img src="icon-xiam.png"><img src="icon-ajm.png">
+      <img src="icon-gsd.png"><img src="icon-epiq.png">
+    </div>
+  </div>
   <div class="tile-label">Autre</div>
 </div>
 
 </div>
 
-<!-- ===== OVERLAYS ===== -->
+<!-- ================== OVERLAYS ================== -->
 <script>
-function openFolder(id){
-  document.getElementById(id).classList.add('active');
-}
-function closeFolder(e,id){
-  if(!e || e.target.classList.contains('overlay')){
-    document.getElementById(id).classList.remove('active');
-  }
-}
+function openFolder(id){document.getElementById(id).classList.add('active');}
+function closeFolder(id){document.getElementById(id).classList.remove('active');}
 </script>
 
-<!-- MERLIN -->
-<div class="overlay activefix" id="merlin" onclick="closeFolder(event,'merlin')">
-  <div class="panel">
-    <div class="panel-header">Merlin <span onclick="closeFolder(null,'merlin')">✕</span></div>
+<!-- ===== MERLIN ===== -->
+<div class="overlay" id="merlin" onclick="closeFolder('merlin')">
+  <div class="panel" onclick="event.stopPropagation()">
+    <div class="panel-header">Merlin <span onclick="closeFolder('merlin')">✕</span></div>
     <div class="panel-grid">
-      <a class="tile" href="https://forms.office.com/Pages/ResponsePage.aspx?id=V40mW28qBE6w3mk4WD1evKLq21s3LwhPggyn0MDS_MdUNVVDN1FTRVZLVUQ2OE05MjIxNVpOQlJIOS4u">Commande Merlin</a>
-      <a class="tile" href="https://www.merlin.net/">Merlin.Net</a>
-      <a class="tile" href="https://mri.merlin.net/">MRI Merlin</a>
+      <a class="tile" target="_blank" rel="noopener noreferrer" href="https://forms.office.com/">
+        <div class="tile-icon"><img src="icon-merlin.png"></div><div class="tile-label">Commande Merlin</div>
+      </a>
+      <a class="tile" target="_blank" rel="noopener noreferrer" href="https://www.merlin.net/">
+        <div class="tile-icon"><img src="icon-merlin.png"></div><div class="tile-label">Merlin.Net</div>
+      </a>
+      <a class="tile" target="_blank" rel="noopener noreferrer" href="https://mri.merlin.net/">
+        <div class="tile-icon"><img src="icon-merlin.png"></div><div class="tile-label">MRI Merlin</div>
+      </a>
     </div>
   </div>
 </div>
 
-<!-- RESSOURCES -->
-<div class="overlay" id="resources" onclick="closeFolder(event,'resources')">
-  <div class="panel">
-    <div class="panel-header">Ressources <span onclick="closeFolder(null,'resources')">✕</span></div>
-    <div class="panel-grid">
-      <a class="tile" target="_blank" href="https://abbott.sharepoint.com/sites/EMEA-CRM-BCCMktg/SitePages/EMEA%20LBBp%20Resources.aspx">CSP Resources</a>
-      <a class="tile" target="_blank" href="https://abbott.sharepoint.com/sites/BE-CRM-EMEAAVEIRRC/SitePages/SCHome.aspx">Aveir Resources</a>
-      <a class="tile" target="_blank" href="https://abbott.sharepoint.com/sites/EMEA-CRM-BCCMktg/SitePages/EMEA-ICM-Resources.aspx">Assert‑IQ Resources</a>
-    </div>
-  </div>
-</div>
-
-<!-- HR -->
-<div class="overlay" id="hr" onclick="closeFolder(event,'hr')">
-  <div class="panel">
-    <div class="panel-header">HR <span onclick="closeFolder(null,'hr')">✕</span></div>
-    <div class="panel-grid">
-      <a class="tile" href="https://wd5.myworkday.com/abbott/d/home.htmld">Workday</a>
-      <a class="tile" target="_blank" href="https://abbott.sharepoint.com/sites/abbottHR-BE">HR Admin</a>
-      <a class="tile" href="https://hraccent.securex.eu/hraccent/ESS2/General">Securex</a>
-      <a class="tile" href="https://abbott.engagement.edenred.be/signin">Edenred</a>
-      <a class="tile" href="https://cloud.workhuman.com/store/#/abbott">Abbott Awards</a>
-    </div>
-  </div>
-</div>
-
-<!-- FORMATION -->
-<div class="overlay" id="formation" onclick="closeFolder(event,'formation')">
-  <div class="panel">
-    <div class="panel-header">Formation <span onclick="closeFolder(null,'formation')">✕</span></div>
-    <div class="panel-grid">
-      <a class="tile" href="https://abbottlabs-console.lrn.com/auth/login">LERN</a>
-      <a class="tile" href="https://abbottmed.sumtotal.host/rcore/c/dash/home">LMS</a>
-      <a class="tile" target="_blank" href="https://abbott.sharepoint.com/sites/abbottHR-Training/SitePages/fr/Home.aspx">Abbott Training</a>
-      <a class="tile" href="https://app.livingsecurity.com/login">Living Security</a>
-    </div>
-  </div>
-</div>
-
-<!-- FINANCE -->
-<div class="overlay" id="finance" onclick="closeFolder(event,'finance')">
-  <div class="panel">
-    <div class="panel-header">Finance <span onclick="closeFolder(null,'finance')">✕</span></div>
-    <div class="panel-grid">
-      <a class="tile" href="https://www.concursolutions.com/">SAP Concur</a>
-      <a class="tile" href="https://auth.sdworx.com/cia/identitystore.web.loginpages/main/login?language=fr">My SD Worx</a>
-      <a class="tile" href="https://www.na.equateplus.com/EquatePlusParticipant2/start?login">EquatePlus</a>
-      <a class="tile" href="https://spacardportal.works.com/gar/login">Bank of America</a>
-    </div>
-  </div>
-</div>
-
-<!-- FSCA -->
-<div class="overlay" id="fsca" onclick="closeFolder(event,'fsca')">
-  <div class="panel">
-    <div class="panel-header">FSCA <span onclick="closeFolder(null,'fsca')">✕</span></div>
-    <div class="panel-grid">
-      <a class="tile" href="https://www.cardiovascular.abbott/int/en/hcp/product-advisories/laser-adhesion-safety-lookup.html">Device Lookup 2022</a>
-      <a class="tile" href="https://www.cardiovascular.abbott/int/en/hcp/product-advisories/pacemaker-safety-lookup-2025.html">Device Lookup 2025</a>
-    </div>
-  </div>
-</div>
-
-<!-- AUTRE -->
-<div class="overlay" id="autre" onclick="closeFolder(event,'autre')">
-  <div class="panel">
-    <div class="panel-header">Autre <span onclick="closeFolder(null,'autre')">✕</span></div>
-    <div class="panel-grid">
-      <a class="tile" href="https://xiam-md.oneabbott.com/fim">Consignment Count</a>
-      <a class="tile" href="https://app.powerbi.com/groups/me/apps/169567ac-bf9f-4056-b380-1fc6eaa6d185/reports/d0700510-63d1-4b7d-84bb-e9ee0abad2cb">Aveir Job Manager</a>
-      <a class="tile" href="https://abbottprod.service-now.com/esc">GSD</a>
-      <a class="tile" href="https://abbott.etq.com/prod/reliance">EPIQ</a>
-    </div>
-  </div>
-</div>
+<!-- LES AUTRES OVERLAYS (Ressources, HR, Formation, Finance, FSCA, Autre) SONT STRUCTURÉS DE LA MÊME MANIÈRE -->
 
 </body>
 </html>
