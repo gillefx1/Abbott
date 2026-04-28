@@ -205,7 +205,15 @@ body{
   </div>
   <div class="tile-label">FSCA</div>
 </div>
-
+<div class="tile" onclick="openFolder('event')">
+  <div class="tile-icon">
+    <div class="folder-preview">
+      <img src="icon-tfoplux.png"><img src="icon-tfopliege.png">
+      <img src="icon-nurseday.png"><img src="icon-abbottaccademy.png">
+    </div>
+  </div>
+  <div class="tile-label">Event</div>
+</div>
 <div class="tile" onclick="openFolder('autre')">
   <div class="tile-icon">
     <div class="folder-preview">
@@ -382,7 +390,39 @@ function closeFolder(id){ document.getElementById(id).classList.remove('active')
 </div>
 </div>
 </div>
+<!-- ===== EVENT ===== -->
+<div class="overlay" id="event" onclick="closeFolder('event')">
+<div class="panel" onclick="event.stopPropagation()">
+<div class="panel-header">Event <span onclick="closeFolder('event')">✕</span></div>
+<div class="panel-grid">
 
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://form.jotform.com/260752466627363">
+    <div class="tile-icon"><img src="icon-tfoplux.png"></div>
+    <div class="tile-label">LU - The Future Of Pacing</div>
+  </a>
+
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://form.jotform.com/260752466627363">
+    <div class="tile-icon"><img src="icon-tfopliege.png"></div>
+    <div class="tile-label">Liège - The Future Of Pacing</div>
+  </a>
+
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://form.jotform.com/260764449340359">
+    <div class="tile-icon"><img src="icon-nurseday.png"></div>
+    <div class="tile-label">Abbott Nurse Day</div>
+  </a>
+
+  <a class="tile" target="_blank" rel="noopener noreferrer"
+     href="https://form.jotform.com/260763648438367">
+    <div class="tile-icon"><img src="icon-abbottaccademy.png"></div>
+    <div class="tile-label">Abbott Accademy</div>
+  </a>
+
+</div>
+</div>
+</div>
 <!-- ===== AUTRE ===== -->
 <div class="overlay" id="autre" onclick="closeFolder('autre')">
 <div class="panel" onclick="event.stopPropagation()">
@@ -408,6 +448,11 @@ function closeFolder(id){ document.getElementById(id).classList.remove('active')
     <div class="tile-icon"><img src="icon-epiq.png"></div>
     <div class="tile-label">EPIQ</div>
   </a>
+<a class="tile" target="_blank" rel="noopener noreferrer"
+   href="https://apps.powerapps.com/play/e/default-5b268d57-2a6f-4e04-b0de-6938583d5ebc/a/5b147606-0c5c-4e29-8853-403c1ab99ebd?tenantId=5b268d57-2a6f-4e04-b0de-6938583d5ebc&hint=b6bda781-b617-4226-8f52-3d5e251d5c75&sourcetime=1776716773682">
+  <div class="tile-icon"><img src="icon-link.png"></div>
+  <div class="tile-label">Aveir Link App</div>
+</a>
 </div>
 </div>
 </div>
