@@ -34,3 +34,29 @@ font-weight: bold;
 .wrapper {
 overflow-x: auto;
 }
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.navigation button {
+    background: #0057B8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.navigation button:hover {
+    background: #003f85;
+}
+
+#currentMonth {
+    font-size: 18px;
+    font-weight: bold;
+}
