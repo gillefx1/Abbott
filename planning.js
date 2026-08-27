@@ -4,6 +4,7 @@ let currentDate = new Date();
 async function loadData() {
 
     const response = await fetch("planning-data.json");
+
     data = await response.json();
 
     renderTable();
@@ -24,7 +25,7 @@ function isBelgianHoliday(date) {
     ];
 
     const current =
-        `${y}-${String(date.getMonth()+1).padStart(2,"0")}-${String(date.getDate()).padStart(2,"0")}`;
+        `${y}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 
     return holidays.includes(current);
 }
@@ -51,29 +52,34 @@ function renderTable() {
     let html = "<tr><th>Jour</th>";
 
     data.people.forEach(person => {
-        html += `<th title="${person.name}">${person.initials}</th>`;
+
+        html += `<th title="${person.name}">
+                    ${person.initials}
+                 </th>`;
+
     });
 
     html += "</tr>";
 
     for (let day = 1; day <= daysInMonth; day++) {
 
-        const currentDay =
-            `${year}-${String(month+1).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
+        const currentDayDate = new Date(year, month, day);
 
-        const d = new Date(year, month, day);
+        const currentDayString =
+            `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 
         let dayClass = "day";
 
         if (
-            d.getDay() === 0 ||
-            d.getDay() === 6 ||
-            isBelgianHoliday(d)
+            currentDayDate.getDay() === 0 ||
+            currentDayDate.getDay() === 6 ||
+            isBelgianHoliday(currentDayDate)
         ) {
             dayClass += " nonworkingday";
         }
 
-        html += `<tr>`;
+        html += "<tr>";
+
         html += `<td class="${dayClass}">${day}</td>`;
 
         data.people.forEach(person => {
@@ -81,47 +87,56 @@ function renderTable() {
             let vacation = false;
             let oncall = false;
 
-            data.vacations.forEach(v => {
+            if (data.vacations) {
 
-                if (
-                    v.person === person.initials &&
-                    currentDay >= v.start &&
-                    currentDay <= v.end
-                ) {
-                    vacation = true;
-                }
+                data.vacations.forEach(v => {
 
-            });
+                    if (
+                        v.person === person.initials &&
+                        currentDayString >= v.start &&
+                        currentDayString <= v.end
+                    ) {
+                        vacation = true;
+                    }
 
-            data.oncall.forEach(g => {
+                });
+            }
 
-                if (
-                    g.person === person.initials &&
-                    currentDay >= g.start &&
-                    currentDay <= g.end
-                ) {
-                    oncall = true;
-                }
+            if (data.oncall) {
 
-            });
+                data.oncall.forEach(g => {
 
-            let css = "";
+                    if (
+                        g.person === person.initials &&
+                        currentDayString >= g.start &&
+                        currentDayString <= g.end
+                    ) {
+                        oncall = true;
+                    }
+
+                });
+            }
+
+            let cssClass = "";
             let text = "";
 
             if (vacation && oncall) {
-                css = "both";
+
+                cssClass = "both";
                 text = "CG";
-            }
-            else if (vacation) {
-                css = "vacation";
+
+            } else if (vacation) {
+
+                cssClass = "vacation";
                 text = "C";
-            }
-            else if (oncall) {
-                css = "oncall";
+
+            } else if (oncall) {
+
+                cssClass = "oncall";
                 text = "G";
             }
 
-            html += `<td class="${css}">${text}</td>`;
+            html += `<td class="${cssClass}">${text}</td>`;
 
         });
 
@@ -134,25 +149,29 @@ function renderTable() {
 document.getElementById("prevMonth")
 .addEventListener("click", () => {
 
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    renderTable();
+    currentDate.setMonth(
+        currentDate.getMonth() - 1
+    );
 
+    renderTable();
 });
 
 document.getElementById("nextMonth")
 .addEventListener("click", () => {
 
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    renderTable();
+    currentDate.setMonth(
+        currentDate.getMonth() + 1
+    );
 
+    renderTable();
 });
 
 document.getElementById("todayBtn")
 .addEventListener("click", () => {
 
     currentDate = new Date();
-    renderTable();
 
+    renderTable();
 });
 
 loadData();
