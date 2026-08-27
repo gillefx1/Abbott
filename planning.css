@@ -93,3 +93,9 @@ overflow-x: auto;
     padding: 5px 10px;
     border-radius: 6px;
 }
+
+.sickness {
+    background-color: #ffd966;
+    color: black;
+    font-weight: bold;
+}
