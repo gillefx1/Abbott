@@ -66,19 +66,19 @@ overflow-x: auto;
     color: #000;
 }
 .vacation {
-    background-color: #ffd966;
+    background-color: #ffc000;
     font-weight: bold;
     color: black;
 }
 
 .oncall {
-    background-color: #c27aff;
+    background-color: #9b59b6;
     font-weight: bold;
     color: white;
 }
 
 .both {
-    background-color: #5b9bd5;
+    background-color: #3498db;
     font-weight: bold;
     color: white;
 }
