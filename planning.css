@@ -97,4 +97,8 @@ overflow-x: auto;
     padding: 5px 10px;
     border-radius: 6px;
 }
+.holiday {
+    background-color: #81C784;
+    font-weight: bold;
+}
 
