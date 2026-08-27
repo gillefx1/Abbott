@@ -68,15 +68,20 @@ function renderTable() {
         const currentDayString =
             `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 
-        let dayClass = "day";
+let dayClass = "day";
 
-        if (
-            currentDayDate.getDay() === 0 ||
-            currentDayDate.getDay() === 6 ||
-            isBelgianHoliday(currentDayDate)
-        ) {
-            dayClass += " nonworkingday";
-        }
+if (
+    currentDayDate.getDay() === 0 ||
+    currentDayDate.getDay() === 6
+) {
+    dayClass += " nonworkingday";
+}
+
+if (
+    isBelgianHoliday(currentDayDate)
+) {
+    dayClass = "day holiday";
+}
 
         html += "<tr>";
 
