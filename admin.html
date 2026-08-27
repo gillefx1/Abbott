@@ -3,51 +3,51 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Administration Planning</title>
+    <title>Administration Planning</title>
 
-<link rel="stylesheet" href="planning.css">
+    <link rel="stylesheet" href="planning.css">
 
 </head>
 
 <body>
 
-<h1>⚙️ Administration Planning</h1>
+    <h1>⚙️ Administration Planning</h1>
 
-<form id="entryForm">
+    <form id="entryForm">
 
-<label>Collaborateur</label>
+        <label>Collaborateur</label>
 
-<select id="person">
-</select>
+        <select id="person">
+        </select>
 
-<label>Type</label>
+        <label>Type</label>
 
-<select id="type">
-    <option value="vacation">Congé</option>
-    <option value="oncall">Garde</option>
-    <option value="oncall">Maladie</option>
-</select>
+        <select id="type">
+            <option value="vacations">Congé</option>
+            <option value="oncall">Garde</option>
+            <option value="sickness">Maladie</option>
+        </select>
 
-<label>Date début</label>
-<input type="date" id="start" required>
+        <label>Date début</label>
+        <input type="date" id="start" required>
 
-<label>Date fin</label>
-<input type="date" id="end" required>
+        <label>Date fin</label>
+        <input type="date" id="end" required>
 
-<button type="submit">
-Ajouter
-</button>
+        <button type="submit">
+            Ajouter
+        </button>
 
-</form>
+    </form>
 
-<h2>Données JSON générées</h2>
+    <h2>Données JSON générées</h2>
 
-<textarea id="output"></textarea>
+    <textarea id="output" rows="20" cols="100"></textarea>
 
-<script src="admin.js"></script>
+    <script src="admin.js"></script>
 
 </body>
 
