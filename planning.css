@@ -82,3 +82,15 @@ overflow-x: auto;
     font-weight: bold;
     color: white;
 }
+.legend {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    padding: 5px 10px;
+    border-radius: 6px;
+}
