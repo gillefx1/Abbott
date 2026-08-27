@@ -60,3 +60,7 @@ overflow-x: auto;
     font-size: 18px;
     font-weight: bold;
 }
+.nonworkingday {
+    background-color: #e8eef7;
+    font-weight: bold;
+}
