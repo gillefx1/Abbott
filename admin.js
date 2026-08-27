@@ -10,12 +10,20 @@ async function loadData() {
     const select =
         document.getElementById("person");
 
+    select.innerHTML = "";
+
     data.people.forEach(person => {
 
-        select.innerHTML +=
-        `<option value="${person.initials}">
-            ${person.name}
-        </option>`;
+        const option =
+            document.createElement("option");
+
+        option.value =
+            person.initials;
+
+        option.textContent =
+            `${person.initials} - ${person.name}`;
+
+        select.appendChild(option);
 
     });
 
@@ -24,13 +32,12 @@ async function loadData() {
 
 function updateOutput() {
 
-    document.getElementById("output")
-    .value =
-    JSON.stringify(data, null, 2);
+    document.getElementById("output").value =
+        JSON.stringify(data, null, 2);
 }
 
 document.getElementById("entryForm")
-.addEventListener("submit", e => {
+.addEventListener("submit", function (e) {
 
     e.preventDefault();
 
@@ -47,10 +54,14 @@ document.getElementById("entryForm")
         document.getElementById("end").value;
 
     const item = {
-        person,
-        start,
-        end
+        person: person,
+        start: start,
+        end: end
     };
+
+    if (!data[type]) {
+        data[type] = [];
+    }
 
     data[type].push(item);
 
@@ -58,4 +69,3 @@ document.getElementById("entryForm")
 });
 
 loadData();
-``
