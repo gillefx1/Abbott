@@ -15,6 +15,26 @@ const people = [
 
 let currentDate = new Date();
 
+function isBelgianHoliday(date) {
+
+    const y = date.getFullYear();
+
+    const holidays = [
+        `${y}-01-01`, // Nouvel An
+        `${y}-05-01`, // Fête du Travail
+        `${y}-07-21`, // Fête Nationale
+        `${y}-08-15`, // Assomption
+        `${y}-11-01`, // Toussaint
+        `${y}-11-11`, // Armistice
+        `${y}-12-25`  // Noël
+    ];
+
+    const current =
+        `${y}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+
+    return holidays.includes(current);
+}
+
 function renderTable() {
 
     const table = document.getElementById("planningTable");
@@ -44,9 +64,23 @@ function renderTable() {
 
     for (let day = 1; day <= daysInMonth; day++) {
 
+        const currentDay = new Date(year, month, day);
+
+        let dayClass = "day";
+
+        const weekDay = currentDay.getDay();
+
+        if (
+            weekDay === 0 ||
+            weekDay === 6 ||
+            isBelgianHoliday(currentDay)
+        ) {
+            dayClass += " nonworkingday";
+        }
+
         html += "<tr>";
 
-        html += `<td class="day">${day}</td>`;
+        html += `<td class="${dayClass}">${day}</td>`;
 
         people.forEach(() => {
             html += "<td></td>";
