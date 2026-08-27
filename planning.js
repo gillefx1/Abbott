@@ -86,6 +86,7 @@ function renderTable() {
 
             let vacation = false;
             let oncall = false;
+            let sickness = false;
 
             if (data.vacations) {
 
@@ -116,25 +117,48 @@ function renderTable() {
 
                 });
             }
+            if (data.sickness) {
+
+                data.sickness.forEach(s => {
+
+                   if (
+                        s.person === person.initials &&
+                        currentDayString >= s.start &&
+                        currentDayString <= s.end
+                    ) {
+                        sickness = true;
+                    }
+
+                });
+            }
 
             let cssClass = "";
-            let text = "";
+let text = "";
 
-            if (vacation && oncall) {
+if (sickness) {
 
-                cssClass = "both";
-                text = "CG";
+    cssClass = "sickness";
+    text = "M";
 
-            } else if (vacation) {
+}
+else if (vacation && oncall) {
 
-                cssClass = "vacation";
-                text = "C";
+    cssClass = "both";
+    text = "CG";
 
-            } else if (oncall) {
+}
+else if (vacation) {
 
-                cssClass = "oncall";
-                text = "G";
-            }
+    cssClass = "vacation";
+    text = "C";
+
+}
+else if (oncall) {
+
+    cssClass = "oncall";
+    text = "G";
+
+}
 
             html += `<td class="${cssClass}">${text}</td>`;
 
