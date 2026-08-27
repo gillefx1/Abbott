@@ -1,0 +1,39 @@
+{
+
+"people": [
+
+{ "initials": "FG", "name": "Francois Gilles" },
+
+{ "initials": "AD", "name": "Alain Desiron" },
+
+{ "initials": "DM", "name": "Didier Meurice" },
+
+{ "initials": "NL", "name": "Nathalie Legrand" },
+
+{ "initials": "QG", "name": "Quentin Gerarts" },
+
+{ "initials": "BB", "name": "Benoit Bonaventure" },
+
+{ "initials": "FT", "name": "Fabien Thoumsin" },
+
+{ "initials": "EB", "name": "Eric Bohyn" },
+
+{ "initials": "PM", "name": "Priscila Martinez" },
+
+{ "initials": "QF", "name": "Quentin Ferron" },
+
+{ "initials": "MB", "name": "Marc Beguin" },
+
+{ "initials": "AS", "name": "Angeline Schmitz" }
+
+],
+
+ 
+
+"vacations": [],
+
+ 
+
+"oncall": []
+
+}
