@@ -1,38 +1,64 @@
 body {
-font-family: Arial, sans-serif;
-margin: 20px;
-background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f5f5f5;
 }
- 
+
 h1 {
-text-align: center;
-color: #003366;
+    text-align: center;
+    color: #003366;
 }
- 
-table {
-border-collapse: collapse;
-width: 100%;
-background: white;
-}
- 
-th, td {
-border: 1px solid #cccccc;
-padding: 8px;
-text-align: center;
-}
- 
-th {
-background-color: #003366;
-color: white;
-}
- 
-.day {
-background-color: #eeeeee;
-font-weight: bold;
-}
- 
+
 .wrapper {
-overflow-x: auto;
+    overflow: auto;
+    max-height: 75vh;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background: white;
+}
+
+th,
+td {
+    border: 1px solid #cccccc;
+    padding: 8px;
+    text-align: center;
+    min-width: 55px;
+}
+
+/* Ligne des initiales figée */
+
+th {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+
+    background-color: #003366;
+    color: white;
+}
+
+/* Coin supérieur gauche */
+
+th:first-child {
+    left: 0;
+    z-index: 30;
+}
+
+/* Colonne Jour figée */
+
+.day,
+.nonworkingday,
+.holiday {
+    position: sticky;
+    left: 0;
+    z-index: 10;
+}
+
+.day {
+    background-color: #eeeeee;
+    font-weight: bold;
 }
 
 .navigation {
@@ -60,29 +86,41 @@ overflow-x: auto;
     font-size: 18px;
     font-weight: bold;
 }
+
 .nonworkingday {
     background-color: #8fa8d6;
     font-weight: bold;
-    color: #000;
+    color: black;
 }
+
+.holiday {
+    background-color: #81C784;
+    font-weight: bold;
+    color: black;
+}
+
 .vacation {
     background-color: #ffd966;
     color: black;
+    font-weight: bold;
 }
 
 .oncall {
     background-color: #9b59b6;
     color: white;
+    font-weight: bold;
 }
 
 .both {
     background-color: #3498db;
     color: white;
+    font-weight: bold;
 }
 
 .sickness {
     background-color: #FF0000;
     color: white;
+    font-weight: bold;
 }
 
 .legend {
@@ -97,8 +135,21 @@ overflow-x: auto;
     padding: 5px 10px;
     border-radius: 6px;
 }
-.holiday {
-    background-color: #81C784;
-    font-weight: bold;
-}
 
+@media (max-width: 768px) {
+
+    body {
+        margin: 10px;
+        font-size: 12px;
+    }
+
+    th,
+    td {
+        min-width: 45px;
+        padding: 5px;
+    }
+
+    .navigation {
+        flex-wrap: wrap;
+    }
+}
