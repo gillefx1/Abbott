@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Administration Planning</title>
+
+<link rel="stylesheet" href="planning.css">
+
+</head>
+
+<body>
+
+<h1>⚙️ Administration Planning</h1>
+
+<form id="entryForm">
+
+<label>Collaborateur</label>
+
+<select id="person">
+</select>
+
+<label>Type</label>
+
+<select id="type">
+    <option value="vacation">Congé</option>
+    <option value="oncall">Garde</option>
+</select>
+
+<label>Date début</label>
+<input type="date" id="start" required>
+
+<label>Date fin</label>
+<input type="date" id="end" required>
+
+<button type="submit">
+Ajouter
+</button>
+
+</form>
+
+<h2>Données JSON générées</h2>
+
+<textarea id="output"></textarea>
+
+admin.jsscript>
+
+</body>
+
+</html>
