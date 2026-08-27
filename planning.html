@@ -1,42 +1,54 @@
 <!DOCTYPE html>
 <html lang="fr">
- 
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Planning CRM South</title>
- 
-<link rel="stylesheet" href="planning.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planning CRM</title>
+
+    <link rel="stylesheet" href="planning.css">
 </head>
- 
+
 <body>
- 
-<h1>📅 Planning CRM</h1>
-<div class="legend">
 
-    <span class="legend-item vacation">C = Congé</span>
+    <h1>📅 Planning CRM</h1>
 
-    <span class="legend-item oncall">G = Garde</span>
+    <div class="legend">
 
-    <span class="legend-item sickness">M = Maladie</span>
+        <span class="legend-item vacation">
+            C = Congé
+        </span>
 
-</div>
-<div class="navigation">
+        <span class="legend-item oncall">
+            G = Garde
+        </span>
 
-    <button id="prevMonth">◀</button>
+        <span class="legend-item sickness">
+            M = Maladie
+        </span>
 
-    <button id="todayBtn">Aujourd'hui</button>
+    </div>
 
-    <span id="currentMonth"></span>
+    <div class="navigation">
 
-    <button id="nextMonth">▶</button>
+        <button id="prevMonth">◀</button>
 
-</div>
-<div class="wrapper">
-<table id="planningTable"></table>
-</div>
- 
-<script src="planning.js"></script>
-  
+        <button id="todayBtn">Aujourd'hui</button>
+
+        <span id="currentMonth"></span>
+
+        <button id="nextMonth">▶</button>
+
+    </div>
+
+    <div class="wrapper">
+
+        <table id="planningTable"></table>
+
+    </div>
+
+    <script src="planning.js"></script>
+
 </body>
+
 </html>
