@@ -1,19 +1,54 @@
 {
   "people": [
-    { "initials": "QG", "name": "Quentin Gerarts" },
-    { "initials": "BB", "name": "Benoit Bonaventure" },
-    { "initials": "FT", "name": "Fabien Thoumsin" },
-    { "initials": "NL", "name": "Nathalie Legrand" },
-    { "initials": "EB", "name": "Eric Bohyn" },
-    { "initials": "FG", "name": "Francois Gilles" },
-    { "initials": "PM", "name": "Priscila Martinez" },
-    { "initials": "QF", "name": "Quentin Ferron" },
-    { "initials": "MB", "name": "Marc Beguin" },
-    { "initials": "AS", "name": "Angeline Schmitz" },
-    { "initials": "AD", "name": "Alain Desiron" },
-    { "initials": "DM", "name": "Didier Meurice" }
+    {
+      "initials": "QG",
+      "name": "Quentin Gerarts"
+    },
+    {
+      "initials": "BB",
+      "name": "Benoit Bonaventure"
+    },
+    {
+      "initials": "FT",
+      "name": "Fabien Thoumsin"
+    },
+    {
+      "initials": "NL",
+      "name": "Nathalie Legrand"
+    },
+    {
+      "initials": "EB",
+      "name": "Eric Bohyn"
+    },
+    {
+      "initials": "FG",
+      "name": "Francois Gilles"
+    },
+    {
+      "initials": "PM",
+      "name": "Priscila Martinez"
+    },
+    {
+      "initials": "QF",
+      "name": "Quentin Ferron"
+    },
+    {
+      "initials": "MB",
+      "name": "Marc Beguin"
+    },
+    {
+      "initials": "AS",
+      "name": "Angeline Schmitz"
+    },
+    {
+      "initials": "AD",
+      "name": "Alain Desiron"
+    },
+    {
+      "initials": "DM",
+      "name": "Didier Meurice"
+    }
   ],
-
   "vacations": [
     {
       "person": "BB",
@@ -21,7 +56,6 @@
       "end": "2026-09-11"
     }
   ],
-
   "oncall": [
     {
       "person": "AD",
@@ -34,6 +68,11 @@
       "end": "2026-09-11"
     }
   ],
-
-  "sickness": []
+  "sickness": [
+    {
+      "person": "MB",
+      "start": "2026-03-05",
+      "end": "2026-08-31"
+    }
+  ]
 }
