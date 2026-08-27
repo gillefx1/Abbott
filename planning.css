@@ -66,21 +66,25 @@ overflow-x: auto;
     color: #000;
 }
 .vacation {
-    background-color: #7ed957;
-    font-weight: bold;
+    background-color: #ffd966;
+    color: black;
 }
 
 .oncall {
-    background-color: #4da6ff;
+    background-color: #9b59b6;
     color: white;
-    font-weight: bold;
 }
 
 .both {
-    background-color: #b266ff;
+    background-color: #3498db;
     color: white;
-    font-weight: bold;
 }
+
+.sickness {
+    background-color: #e74c3c;
+    color: white;
+}
+
 .legend {
     display: flex;
     gap: 10px;
@@ -94,8 +98,3 @@ overflow-x: auto;
     border-radius: 6px;
 }
 
-.sickness {
-    background-color: #ffd966;
-    color: black;
-    font-weight: bold;
-}
